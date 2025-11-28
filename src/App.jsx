@@ -41,6 +41,11 @@ function App() {
     setShowAddFriend(false);
   };
 
+  const handleAddFriend = (newFriend) => {
+    setFriends((friends) => [...friends, newFriend]);
+    setShowAddFriend(false);
+  };
+
   return (
     <div className="app">
       <div className="sidebar">
@@ -49,7 +54,7 @@ function App() {
           onSelectFriend={handleSelectFriend}
           selectedFriend={selectedFriend}
         />
-        {showAddFriend && <FriendAdd />}
+        {showAddFriend && <FriendAdd onFriendAdd={handleAddFriend} />}
         <Button onClick={toggleAddFriend}>
           {showAddFriend ? "Close" : "Add Friend"}
         </Button>
