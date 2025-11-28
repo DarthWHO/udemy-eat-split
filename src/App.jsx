@@ -1,8 +1,11 @@
-import { useState } from 'react'
-import './App.css'
+import { useState } from "react";
+import "./App.css";
+import Friends from "./components/Friends";
+import FriendAdd from "./components/FriendAdd";
+import Split from "./components/Split";
+import Button from "./components/Button";
 
 function App() {
-
   const initialFriends = [
     {
       id: 118836,
@@ -24,12 +27,19 @@ function App() {
     },
   ];
 
+  const [friends, setFriends] = useState(initialFriends);
 
   return (
-    <>
-      <h1>Hello World!</h1>
-    </>
-  )
+    <div className="app">
+      <div className="sidebar">
+        <Friends friends={friends} />
+        <FriendAdd />
+        <Button onClick={() => console.log("Add Friend")}>Add Friend</Button>
+      </div>
+
+      <Split friend={friends[1]} />
+    </div>
+  );
 }
 
-export default App
+export default App;
