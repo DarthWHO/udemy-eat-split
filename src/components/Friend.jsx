@@ -1,7 +1,6 @@
 import Button from "./Button";
 
-export default function Friend({ friend }) {
-
+export default function Friend({ friend, onSelectFriend, selectedFriend }) {
   let balanceMessage;
   let balanceColor;
 
@@ -17,11 +16,11 @@ export default function Friend({ friend }) {
   }
 
   return (
-    <li>
+    <li className={selectedFriend?.id === friend.id ? "selected" : ""}>
       <img src={friend.image} alt={friend.name} />
       <h3>{friend.name}</h3>
       <p className={balanceColor}>{balanceMessage}</p>
-      <Button onClick={() => console.log("Select Friend")}>Select</Button>
+      <Button onClick={() => onSelectFriend(friend)}>Select</Button>
     </li>
   );
 }

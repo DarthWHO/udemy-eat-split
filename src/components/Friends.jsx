@@ -1,9 +1,13 @@
 import Friend from "./Friend";
-import Button from "./Button";
 
-export default function Friends({ friends }) {
+export default function Friends({ friends, onSelectFriend, selectedFriend }) {
   const displayFriends = friends.map((friend) => (
-    <Friend key={friend.id} friend={friend} />
+    <Friend
+      key={friend.id}
+      friend={friend}
+      onSelectFriend={onSelectFriend}
+      selectedFriend={selectedFriend}
+    />
   ));
 
   return <ul>{displayFriends}</ul>;
